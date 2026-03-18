@@ -4,7 +4,8 @@
  */
 package snake;
 
-import javax.swing.JFrame;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -12,16 +13,29 @@ import javax.swing.JFrame;
  */
 public class GameFrame extends JFrame{
     
+    private TopPanel topPanel;
+    private GamePanel gamePanel;  
+    
     GameFrame() {
         
-        this.add(new GamePanel());
-        this.setTitle("Snake Game");
+        this.setLayout(new BorderLayout());
+
+        topPanel = new TopPanel();
+        gamePanel = new GamePanel(topPanel);
+
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(gamePanel, BorderLayout.CENTER);
+
+        this.setTitle("Snake");
+        this.setIconImage(new ImageIcon(getClass().getResource("/img/snake.png")).getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.pack();
-        this.setVisible(true);
         this.setLocationRelativeTo(null);
-        
+        this.setVisible(true);
+        gamePanel.setFocusable(true);
+        gamePanel.requestFocusInWindow(); 
+
     }
-    
+       
 }

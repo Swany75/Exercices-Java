@@ -22,9 +22,9 @@ public class GamePanel extends JPanel implements ActionListener {
     
     int SCREEN_WIDTH = 600;
     int SCREEN_HEIGHT = 600;
-    int UNIT_SIZE = 64;
+    int UNIT_SIZE = 24;
     int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
-    int DELAY = 100;
+    int DELAY = 70;
 
     int x[] = new int[GAME_UNITS];
     int y[] = new int[GAME_UNITS];

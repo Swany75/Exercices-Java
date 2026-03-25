@@ -4,7 +4,6 @@
  */
 package snake;
 
-
 /**
  *
  * @author Juan
@@ -21,7 +20,8 @@ public class Snake {
     }
 
     private void run() {
-        new GameFrame();
+        // new GameFrame();
+        new Settings();
     }
 
 }

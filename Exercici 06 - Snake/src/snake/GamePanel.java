@@ -94,12 +94,10 @@ public class GamePanel extends JPanel implements ActionListener {
         int btnSize = 100; 
 
         int posX = (SCREEN_WIDTH - btnSize) / 2;
-        // Bajamos el botón un poco (sumamos 15 al centro) para que no choque con GAME OVER
         int posY = ((SCREEN_HEIGHT - btnSize) / 2) + 15; 
 
         restartButton.setBounds(posX, posY, btnSize, btnSize);
 
-        // ... (el resto del código del try-catch se mantiene igual)
         try {
             ImageIcon icon = new ImageIcon(getClass().getResource("/img/Reset.png"));
             Image img = icon.getImage().getScaledInstance(btnSize, btnSize, Image.SCALE_SMOOTH);

@@ -30,7 +30,7 @@ public class VuitReines extends JPanel implements MouseListener, MouseMotionList
     int pxWidth = 800;
     int pxHeight = 800;
     
-    boolean[][] panel = new bolean[rows][cols];
+    boolean[][] panel = new boolean[rows][cols];
     boolean[] queens = new boolean[max];
     
     // Images
@@ -67,40 +67,74 @@ public class VuitReines extends JPanel implements MouseListener, MouseMotionList
             }
         }
     }
-    
-    private void paintQueen(MouseEvent e) {
-        int col = e.getX() / cellWidth;
-        int row = e.getY() / cellHeight;
-        int index = row * cols + col;
-
-        if (index < 0 || index >= colors.length) return;
-
         
+    private boolean isSecure(int row, int col) {
+        boolean res = true;
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (panel[i][j]) {
+                    if (i == row || j == col) { res = false; }
+                    if (Math.abs(i - row) == Math.abs(j - col)) { res = false; }
+                }
+            }
+        }
+        
+        return res;
+    }
+    
+    private void checkVictory() {
+        int comptador = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (panel[i][j]) {
+                    comptador++;
+                }
+            }
+        }
+
+        if (comptador == 8) {
+            repaint();
+            JOptionPane.showMessageDialog(this, "Enhorabona! Has col·locat les 8 reines.");
+            reset();
+        }
+    }
+    
+    private void reset() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                panel[i][j] = false;
+            }
+        }
         repaint();
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         
         cellWidth = getWidth() / cols;
         cellHeight = getHeight() / rows;
-        
-        int index = 0;
-        
+
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                g.setColor(colors[index]);
+                if ((row + col) % 2 == 0) {
+                    g.setColor(chessLight);
+                } else {
+                    g.setColor(chessDark);
+                }
                 g.fillRect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-                
-                if (queens[index]) {
+
+                if (panel[row][col]) {
                     g.drawImage(queen, col * cellWidth, row * cellHeight, cellWidth, cellHeight, this);
                 }
-                
-                index++;
             }
         }
-        
     }
     
     @Override
@@ -109,12 +143,23 @@ public class VuitReines extends JPanel implements MouseListener, MouseMotionList
         int row = e.getY() / cellHeight;
         int index = row * cols + col;
 
-        if (index >= 0 && index < max) {
-            queens[index] = !queens[index]; // Pone/Quita la reina
-            repaint(); 
+        if (row >= 0 && row < rows && col >= 0 && col < cols) {
+        
+            if (panel[row][col]) {
+                // REQUERIMENT: Si ja hi ha una reina, s'elimina
+                panel[row][col] = false;
+            } else {
+                // REQUERIMENT: Si no n'hi ha, comprovem si es pot posar
+                if (isSecure(row, col)) {
+                    panel[row][col] = true;
+                    checkVictory();
+                }
+            }
+            
+            repaint();
         }
     }
-
+    
     @Override
     public void mousePressed(MouseEvent e) {
         // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

@@ -20,8 +20,7 @@ public class Snake {
     }
 
     private void run() {
-        // new GameFrame();
-        new Settings();
+        new GameFrame();        
     }
 
 }

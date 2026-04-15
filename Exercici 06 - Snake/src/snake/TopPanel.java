@@ -12,25 +12,21 @@ package snake;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author swany
- */
-
 public class TopPanel extends JPanel {
+    private GamePanel     gamePanel;
+    private JTextField    screen;
+    private JButton       settingsButton;
+    private Settings      settingsWindow;
+    private JLabel        appleLabel;
+    private SettingsState settingsState = new SettingsState(); // persists across openings
 
-    private JTextField screen;
-    private JButton settingsButton;
-    private Settings settingsWindow;
-    private JLabel appleLabel;
-    
     private Color topPanelBG = new Color(0x4A752C);
-    
-    public TopPanel() {
+
+    public TopPanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
         setLayout(new BorderLayout());
         setBackground(topPanelBG);
         setPreferredSize(new Dimension(600, 50));
-
         initComponents();
     }
 
@@ -40,20 +36,19 @@ public class TopPanel extends JPanel {
         setAppleImage();
         addComponents();
     }
-    
+
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
     private void setMenuButton() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/metalGear.png"));
-
         Image img = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        icon = new ImageIcon(img);
-
-        settingsButton = new JButton(icon);
+        settingsButton = new JButton(new ImageIcon(img));
         settingsButton.setPreferredSize(new Dimension(50, 50));
         settingsButton.setFocusPainted(false);
         settingsButton.setBorder(null);
         settingsButton.setBackground(topPanelBG);
-        
-        // Listeners
         settingsButton.addActionListener(e -> openSettings());
     }
 
@@ -67,7 +62,6 @@ public class TopPanel extends JPanel {
                 super.paintComponent(g2d);
             }
         };
-        
         screen.setForeground(Color.WHITE);
         screen.setBackground(topPanelBG);
         screen.setFont(new Font("Monospaced", Font.BOLD, 30));
@@ -76,29 +70,27 @@ public class TopPanel extends JPanel {
         screen.setEditable(false);
         screen.setFocusable(false);
     }
-    
+
     private void setAppleImage() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/Apple.png"));
         Image img = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        icon = new ImageIcon(img);
-
-        appleLabel = new JLabel(icon);
+        appleLabel = new JLabel(new ImageIcon(img));
         appleLabel.setPreferredSize(new Dimension(50, 50));
     }
-    
+
     private void addComponents() {
         add(settingsButton, BorderLayout.WEST);
         add(screen, BorderLayout.CENTER);
         add(appleLabel, BorderLayout.EAST);
     }
-    
+
     public void setScore(int score) {
         screen.setText(String.valueOf(score));
     }
-    
+
     private void openSettings() {
         if (settingsWindow == null || !settingsWindow.isDisplayable()) {
-            settingsWindow = new Settings();
+            settingsWindow = new Settings(gamePanel, settingsState);
         } else {
             settingsWindow.toFront();
         }

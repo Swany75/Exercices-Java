@@ -17,15 +17,14 @@ public class GameFrame extends JFrame{
     private GamePanel gamePanel;  
     
     GameFrame() {
-        
         this.setLayout(new BorderLayout());
 
-        topPanel = new TopPanel();
-        gamePanel = new GamePanel(topPanel);
+        topPanel = new TopPanel(null);       // 1. TopPanel sin gamePanel
+        gamePanel = new GamePanel(topPanel); // 2. GamePanel con topPanel
+        topPanel.setGamePanel(gamePanel);    // 3. Conectar gamePanel al topPanel
 
         this.add(topPanel, BorderLayout.NORTH);
         this.add(gamePanel, BorderLayout.CENTER);
-
         this.setTitle("Snake");
         this.setIconImage(new ImageIcon(getClass().getResource("/img/snake.png")).getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,8 +33,7 @@ public class GameFrame extends JFrame{
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         gamePanel.setFocusable(true);
-        gamePanel.requestFocusInWindow(); 
-
+        gamePanel.requestFocusInWindow();
     }
        
 }

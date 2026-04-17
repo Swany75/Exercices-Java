@@ -42,7 +42,7 @@ public class VuitReines extends JPanel implements MouseListener, MouseMotionList
     Color chessLight = new Color(0xEBECD0);
     
     private void run() {
-        genTableColors();
+        genBoardColors();
         JFrame frame = new JFrame("Eight Queens");
         frame.setSize(pxWidth, pxHeight);        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +53,7 @@ public class VuitReines extends JPanel implements MouseListener, MouseMotionList
         
     }
 
-    private void genTableColors() {
+    private void genBoardColors() {
         
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -146,10 +146,10 @@ public class VuitReines extends JPanel implements MouseListener, MouseMotionList
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
         
             if (panel[row][col]) {
-                // REQUERIMENT: Si ja hi ha una reina, s'elimina
+                //  Si ja hi ha una reina, s'elimina
                 panel[row][col] = false;
             } else {
-                // REQUERIMENT: Si no n'hi ha, comprovem si es pot posar
+                // Si no n'hi ha, comprovem si es pot posar
                 if (isSecure(row, col)) {
                     panel[row][col] = true;
                     checkVictory();

@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author Juan
  */
+
 public class ImageManager {
     
     public static ImageIcon loadIcon(String path) {

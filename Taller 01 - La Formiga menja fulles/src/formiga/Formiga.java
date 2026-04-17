@@ -35,7 +35,6 @@ public class Formiga extends JFrame implements KeyListener{
     static final int ANT = 3;
     
     // Imatges i Icones
-
     ImageIcon LEAF_ICON = ImageManager.loadScaledIcon("src/images/hoja.png", MIDA, MIDA);
     ImageIcon FORBIDDEN_ICON = ImageManager.loadScaledIcon("src/images/direccionProhibida.png", MIDA, MIDA);
     ImageIcon EMPTY_ICON = ImageManager.loadScaledIcon("src/images/nada.png", MIDA, MIDA);
@@ -46,6 +45,14 @@ public class Formiga extends JFrame implements KeyListener{
     ImageIcon ANT_W = ImageManager.loadScaledIcon("src/images/hormiga_o.png", MIDA, MIDA);
 
     ImageIcon[] ANT_ICONS = { ANT_N, ANT_S, ANT_E, ANT_W };
+    
+    // Sounds
+    
+    String yum = "src/sounds/yum.wav";
+    String perfect = "src/sounds/perfect.wav";
+    String bomb = "src/sounds/bomb.wav";
+    
+    String[] sounds = {yum, bomb, perfect};
     
     // Classes
     Random random = new Random();
@@ -64,6 +71,8 @@ public class Formiga extends JFrame implements KeyListener{
         setTitle("La Formiga que menja fulles");
         setLayout(new GridLayout(ROWS, COLS));
         setIconImage((randAntIcon()).getImage());
+        
+        SoundManager.load(sounds);
         
         content = genInitialMatrix();
         spawnAnt();
@@ -182,12 +191,12 @@ public class Formiga extends JFrame implements KeyListener{
         
         // Menja fulla
         if (content[newRow][newCol] == LEAF) {
-            sound.reproduce("src/sounds/yum.wav");
+            sound.reproduce(yum);
         }
 
         // Prohibit
         if (content[newRow][newCol] == FORBIDDEN) {
-            sound.reproduce("src/sounds/bomb.wav");
+            sound.reproduce(bomb);
             return;
         }
 
@@ -235,7 +244,7 @@ public class Formiga extends JFrame implements KeyListener{
             }
         }
         
-        sound.reproduce("src/sounds/perfect.wav");
+        sound.reproduce(perfect);
         
         JLabel msg = new JLabel("GAME OVER", SwingConstants.CENTER);
         msg.setFont(new Font("JetBrains Mono", Font.BOLD, 18));

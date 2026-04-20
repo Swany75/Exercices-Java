@@ -27,11 +27,14 @@ public class TicTacToe extends JPanel implements MouseListener, MouseMotionListe
 
     boolean gameOver = false;
 
+    // Global Images
     Image imgX;
     Image imgO;
 
+    // Classes
     Random random = new Random();
 
+    // Colors
     Color chessDark = new Color(0x779556);
     Color chessLight = new Color(0xEBECD0);
 
@@ -44,7 +47,7 @@ public class TicTacToe extends JPanel implements MouseListener, MouseMotionListe
         imgX = new ImageIcon("src/images/X.png").getImage();
         imgO = new ImageIcon("src/images/O.png").getImage();
 
-        // inicializar matriz (buena práctica)
+        // Inicialitzar la Matriu
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < cols; j++)
                 MATRIX[i][j] = '\0';
@@ -88,7 +91,7 @@ public class TicTacToe extends JPanel implements MouseListener, MouseMotionListe
 
     private boolean checkWin(char p) {
 
-        boolean res;
+        boolean res = false;
         
         for (int i = 0; i < 3; i++) {
             if (MATRIX[i][0] == p && MATRIX[i][1] == p && MATRIX[i][2] == p) { 
@@ -106,7 +109,7 @@ public class TicTacToe extends JPanel implements MouseListener, MouseMotionListe
             res = true;
         }
 
-        return false;
+        return res;
     }
 
     private boolean isDraw() {
@@ -122,41 +125,45 @@ public class TicTacToe extends JPanel implements MouseListener, MouseMotionListe
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-        if (gameOver) return;
+    public void mousePressed(MouseEvent e) {
 
         int col = e.getX() / cellWidth;
         int row = e.getY() / cellHeight;
 
-        if (row < 0 || row >= rows || col < 0 || col >= cols) return;
-        if (MATRIX[row][col] != '\0') return;
+        boolean outOfBounds = row < 0 || row >= rows || col < 0 || col >= cols;
+        boolean cellOccupied = !outOfBounds && MATRIX[row][col] != '\0';
 
-        MATRIX[row][col] = turn;
+        if (!outOfBounds && !cellOccupied) {
 
-        if (checkWin(turn)) {
-            gameOver = true;
-            repaint();
-            JOptionPane.showMessageDialog(this, "Gana: " + turn);
-            return;
+            MATRIX[row][col] = turn;
+
+            if (checkWin(turn)) {
+                gameOver = true;
+                repaint();
+                JOptionPane.showMessageDialog(this, turn + " wins");
+
+            } else if (isDraw()) {
+                gameOver = true;
+                repaint();
+                JOptionPane.showMessageDialog(this, "Empate");
+
+            } else {
+                turn = (turn == 'x') ? 'o' : 'x';
+                repaint();
+            }
         }
-
-        if (isDraw()) {
-            gameOver = true;
-            repaint();
-            JOptionPane.showMessageDialog(this, "Empate");
-            return;
-        }
-        
-        turn = (turn == 'x') ? 'o' : 'x';
-
-        repaint();
     }
 
-    public void mousePressed(MouseEvent e) {}
+    @Override
+    public void mouseClicked(MouseEvent e) {}
+    @Override
     public void mouseReleased(MouseEvent e) {}
+    @Override
     public void mouseEntered(MouseEvent e) {}
+    @Override
     public void mouseExited(MouseEvent e) {}
+    @Override
     public void mouseDragged(MouseEvent e) {}
+    @Override
     public void mouseMoved(MouseEvent e) {}
 }

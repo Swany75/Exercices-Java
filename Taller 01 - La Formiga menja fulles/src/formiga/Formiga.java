@@ -6,7 +6,7 @@ package formiga;
 
 /**
  *
- * @author swany
+ * @author Juan Dalmau
  */
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class Formiga extends JFrame implements KeyListener{
     /* VARIABLES & CONSTANTS **************************************************/
     /**************************************************************************/
     
-    int ROWS = 20, COLS = 20, MIDA = 32;;
+    int ROWS = 20, COLS = 20, MIDA = 32;
     
     JLabel[][] board = new JLabel[ROWS][COLS];
     int[][] content = new int[ROWS][COLS];
@@ -68,6 +68,9 @@ public class Formiga extends JFrame implements KeyListener{
     }
     
     private void run() {
+        // Arreglar escalat
+        System.setProperty("sun.java2d.uiScale", "1");
+        
         setTitle("La Formiga que menja fulles");
         setLayout(new GridLayout(ROWS, COLS));
         setIconImage((randAntIcon()).getImage());
@@ -108,7 +111,7 @@ public class Formiga extends JFrame implements KeyListener{
             }
         }
 
-        // Generam els prohibits
+        // Afegir aleatoriament prohibits
         int prohibits = 0;
         
         while (prohibits < 5) {

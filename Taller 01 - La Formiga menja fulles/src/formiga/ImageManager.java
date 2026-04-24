@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Juan
+ * @author Juan Dalmau
  */
 
 public class ImageManager {

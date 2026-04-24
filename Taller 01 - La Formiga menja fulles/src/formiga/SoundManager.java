@@ -9,7 +9,8 @@ import java.io.File;
 import java.io.IOException;
  
 /**
- * @author Juan
+ * @author Juan Dalmau
+ * Font d'inspiració: https://www.coderslexicon.com/playing-and-thottling-sound-clips-in-java/
  */
 public class SoundManager {
  
@@ -27,23 +28,40 @@ public class SoundManager {
                 clip.open(ais);
                 clips[i] = clip;
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-                System.err.println("SoundManager: could not load \"" + sounds[i] + "\": " + e.getMessage());
+            System.err.println("SoundManager: could not load \"" + sounds[i] + "\": " + e.getMessage());
             }
         }
     }
- 
-    public void reproduce(String path) {
+    
+    
+    public static void reproduce(String path) {
         if (clips == null) return;
- 
+
         for (int i = 0; i < paths.length; i++) {
             if (paths[i].equals(path) && clips[i] != null) {
-                clips[i].setFramePosition(0); // Rewind to start
+                if (clips[i].isRunning()) {
+                    clips[i].stop();
+                }
+                clips[i].setFramePosition(0);
                 clips[i].start();
                 return;
             }
         }
- 
+
         System.err.println("SoundManager: \"" + path + "\" was not found. Did you load it?");
     }
+    
+    /* Metode amb sense solapament
+    public static void reproduce(String path) {
+        try {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(new File(path));
+            Clip clip = AudioSystem.getClip();
+            clip.open(ais);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println("SoundManager: error reproduciendo " + path);
+        }
+    }
+    */
 }
  

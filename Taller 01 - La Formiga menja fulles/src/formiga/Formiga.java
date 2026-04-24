@@ -75,8 +75,6 @@ public class Formiga extends JFrame implements KeyListener{
         setLayout(new GridLayout(ROWS, COLS));
         setIconImage((randAntIcon()).getImage());
         
-        SoundManager.load(sounds);
-        
         content = genInitialMatrix();
         spawnAnt();
         generateBoard();

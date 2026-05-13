@@ -1,0 +1,12 @@
+103;Minecraft;Sandbox;PC;2011
+25;Tetris;Puzzle;Game Boy;1989
+87;Zelda Breath of the Wild;Aventura;Switch;2017
+41;Pac-Man;Arcade;Arcade;1980
+12;Super Mario Bros;Plataformes;NES;1985
+156;Fortnite;Battle Royale;PC;2017
+74;Sonic the Hedgehog;Plataformes;Mega Drive;1991
+203;The Sims;Simulacio;PC;2000
+58;Street Fighter II;Lluita;Super Nintendo;1991
+132;Gran Turismo;Conduccio;PlayStation;1997
+91;Animal Crossing;Social;Switch;2020
+7;Pong;Esports;Arcade;1971

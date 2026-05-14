@@ -1,0 +1,26 @@
+1111,Smartphone Samsung Galaxy S20,1
+2222,Portátil HP Pavilion 15,2
+3333,Smart TV LG 55 pulgadas,3
+4444,Consola de videojuegos PlayStation 5,4
+5555,Tableta gráfica Wacom Intuos Pro,5
+6666,Auriculares inalámbricos Sony WH-1000XM4,6
+7777,Cámara digital Canon EOS R6,7
+8888,Impresora multifunción Epson EcoTank ET-4750,8,
+9999,9
+9999,,,1
+1010,Monitor de computadora Dell UltraSharp U3419W,10,,,
+aaa,Altavoz inteligente Amazon Echo Dot,11
+3030,Robot aspirador iRobot Roomba 980,12
+4040,Router inalámbrico ASUS RT-AX88U,13
+5050,Teclado mecánico Corsair K95 RGB Platinum,14
+6060,Ratón gaming Logitech G502 HERO,15
+7070,Monitor de actividad física Fitbit Charge 4,16
+8080,Pulsera de fitness Xiaomi Mi Band 6,17
+9090,Cafetera Nespresso Vertuo Next,18
+1001,Batidora de mano KitchenAid Artisan,19
+2002,Horno eléctrico Taurus Mycook Touch,20
+3003,Plancha de vapor Philips Azur Elite,21
+4004,Aspiradora Dyson V11 Absolute,22
+5005,Licuadora Ninja Professional Blender,23
+6006,Microondas Panasonic NN-CD87KS,24
+7007,Freidora de aire Philips Airfryer XXL,25

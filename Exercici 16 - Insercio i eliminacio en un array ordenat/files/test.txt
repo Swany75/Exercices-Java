@@ -1,0 +1,100 @@
+1111,Smartphone Samsung Galaxy S20,1
+2222,Portátil HP Pavilion 15,2
+3333,Smart TV LG 55 pulgadas,3
+4444,Consola de videojuegos PlayStation 5,4
+5555,Tableta gráfica Wacom Intuos Pro,5
+6666,Auriculares inalámbricos Sony WH-1000XM4,6
+7777,Cámara digital Canon EOS R6,7
+8888,Impresora multifunción Epson EcoTank ET-4750,8
+9999,Reproductor de música Apple iPod Touch,9
+1010,Monitor de computadora Dell UltraSharp U3419W,10
+2020,Altavoz inteligente Amazon Echo Dot,11
+3030,Robot aspirador iRobot Roomba 980,12
+4040,Router inalámbrico ASUS RT-AX88U,13
+5050,Teclado mecánico Corsair K95 RGB Platinum,14
+6060,Ratón gaming Logitech G502 HERO,15
+7070,Monitor de actividad física Fitbit Charge 4,16
+8080,Pulsera de fitness Xiaomi Mi Band 6,17
+9090,Cafetera Nespresso Vertuo Next,18
+1001,Batidora de mano KitchenAid Artisan,19
+2002,Horno eléctrico Taurus Mycook Touch,20
+3003,Plancha de vapor Philips Azur Elite,21
+4004,Aspiradora Dyson V11 Absolute,22
+5005,Licuadora Ninja Professional Blender,23
+6006,Microondas Panasonic NN-CD87KS,24
+7007,Freidora de aire Philips Airfryer XXL,25
+8008,Exprimidor eléctrico Braun Multiquick 5,26
+9009,Tostadora Russell Hobbs Retro,27
+1101,Sartén antiadherente Tefal Expertise,28
+2202,Batería de cocina Zwilling Twin Classic,29
+3303,Juego de cuchillos Kai Shun Premier Tim Mälzer,30
+4404,Maleta de viaje Samsonite S'Cure Spinner,31
+5505,Mochila North Face Recon,32
+6606,Bolso bandolera Calvin Klein Jeans,33
+7707,Cartera de cuero Tommy Hilfiger,34
+8808,Gafas de sol Ray-Ban Aviator,35
+9909,Reloj Casio G-Shock GA-2100,36
+1010,Pulsera de plata Pandora Moments,37
+1111,Anillo de compromiso Tiffany & Co.,38
+1212,Colgante Swarovski Sparkling Dance,39
+1313,Pendientes de oro Cartier Love,40
+1414,Brazalete Bulgari Serpenti,41
+1515,Chaqueta de cuero Zara,42
+1616,Abrigo de lana H&M,43
+1717,Camisa Ralph Lauren Oxford,44
+1818,Camiseta Nike Dri-FIT,45
+1919,Pantalones Levi's 501,46
+2020,Vestido Zara Woman,47
+2121,Falda Mango Plisada,48
+2222,Pijama Calvin Klein Modern Cotton,49
+2323,Ropa interior Victoria's Secret,50
+2424,Zapatos Adidas Ultraboost,51
+2525,Botas Timberland Classic,52
+2626,Zapatillas Converse Chuck Taylor All Star,53
+2727,Sandalias Birkenstock Arizona,54
+2828,Botines Dr. Martens 1460,55
+2929,Bolso Louis Vuitton Neverfull,56
+3030,Mochila Herschel Little America,57
+3131,Bandolera Gucci GG Marmont,58
+3232,Cartera Coach Tabby,59
+3333,Bufanda Burberry Classic Check,60
+3434,Gorra New Era 9FIFTY,61
+3535,Guantes UGG Classic,62
+3636,Paraguas Fulton Open & Close,63
+3737,Gafas de esquí Oakley Flight Deck,64
+3838,Casco de bicicleta Giro Aether MIPS,65
+3939,Correa Fitbit Versa,66
+4040,Funda para iPhone Apple Leather,67
+4141,Funda para portátil Tomtoc Slim,68
+4242,Funda para tablet MoKo,69
+4343,Funda para libro Kindle Amazon,70
+4444,Funda para pasaporte Kate Spade,71
+4545,Estuche para gafas Ray-Ban,72
+4646,Porta tarjetas Montblanc Meisterstück,73
+4747,Estuche para bolígrafos Parker Jotter,74
+4848,Portafolio Moleskine Classic,75
+4949,Bolsa de viaje Longchamp Le Pliage,76
+5050,Neceser L'Occitane en Provence,77
+5151,Bolsa térmica YETI Hopper Flip,78
+5252,Bolsa de playa Sunnylife Luxe,79
+5353,Bolsa de gimnasio adidas Performance,80
+5454,Maletín Targus CityLite Pro,81
+5555,Mochila para portátil HP Odyssey,82
+5656,Funda para teclado Logitech G Pro,83
+5757,Bolso para cámara Lowepro ProTactic,84
+5858,Funda para guitarra Fender Deluxe,85
+5959,Funda para violín Bam Hightech,86
+6060,Funda para saxofón Protec Contoured,87
+6161,Funda para trompeta Gard Mid-Suspension,88
+6262,Funda para clarinete Buffet Crampon,89
+6363,Funda para flauta Gemeinhardt,90
+6464,Funda para oboe Yamaha Standard,91
+6565,Funda para fagot BAM Trekking,92
+6666,Funda para cuerno francés Marcus Bonna,93
+6767,Funda para tuba Gard Elite,94
+6868,Funda para trombón Protec Pro Pac,95
+6969,Funda para viola Bobelock Half-Moon,96
+7070,Funda para violonchelo Bam Panther,97
+7171,Funda para contrabajo Mooradian Deluxe,98
+7272,Funda para guitarra eléctrica Gator GigBox,99
+7373,Funda para guitarra acústica SKB Freedom,100

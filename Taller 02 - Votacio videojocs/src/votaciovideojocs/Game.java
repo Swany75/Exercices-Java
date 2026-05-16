@@ -80,6 +80,10 @@ public class Game {
         this.votes = votes;
     }
     
+    public void addVotes(int votes) {
+        this.votes += votes;
+    }
+     
     // Mètode toString corregit
     @Override
     public String toString() {

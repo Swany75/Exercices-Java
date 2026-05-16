@@ -53,15 +53,22 @@ public class VotacioVideojocs {
                     }
                     
                     case 3 -> {
-                        
+                        java.io.File f = new java.io.File(DAT_FILE);
+                        if (!f.exists()) {
+                            System.out.println("[!] Error: El fitxer binari no existeix de moment.");
+                            System.out.println("[i] Pista: Executa primer la opció 1 per generar-lo.");
+                        } else {
+                            voteGame(sc);
+                        }
                     }
                     
                     case 0 -> {
-                        
+                        System.out.println("\n[+] Sortint de l'aplicació...");
                     }
                     
                     default -> {
-                        
+                        System.out.println("\n[!] Error: Opció no valida");
+                        System.out.println("\n[i] Pista: Introdueix un valor del 0 al 3");
                     }
                 }
                 
@@ -88,8 +95,11 @@ public class VotacioVideojocs {
             
             int codi = Integer.parseInt(fields[0].trim());
             String titol = fields[1].trim();
+            if (titol.length() > 30) titol = titol.substring(0, 30);
             String genere = fields[2].trim();
+            if (genere.length() > 15) genere = genere.substring(0, 15);
             String plataforma = fields[3].trim();
+            if (plataforma.length() > 15) plataforma = plataforma.substring(0, 15);
             int any = Integer.parseInt(fields[4].trim());
             
             array[c] = new Game(codi, titol, genere, plataforma, any, 0);
@@ -138,12 +148,6 @@ public class VotacioVideojocs {
         }
     }
     
-    private void writeString(RandomAccessFile raf, String s, int midaFixa) throws IOException {
-        for (int i = 0; i < midaFixa; i++) {
-            char c = (i < s.length()) ? s.charAt(i) : ' ';
-            raf.writeChar(c);
-        }
-    }
     
     private void showBinaryFile() {
         clearScreen();
@@ -165,25 +169,95 @@ public class VotacioVideojocs {
         }
     }
     
-    private String readString(RandomAccessFile raf, int midaFixa) throws IOException {
-        String s = "";
+    private void writeString(RandomAccessFile raf, String s, int midaFixa) throws IOException {
         for (int i = 0; i < midaFixa; i++) {
-            s += raf.readChar();
+            char c = (i < s.length()) ? s.charAt(i) : ' ';
+            raf.writeChar(c);
         }
-        return s.trim(); 
     }
 
+    private String readString(RandomAccessFile raf, int midaFixa) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < midaFixa; i++) {
+            sb.append(raf.readChar());
+        }
+        return sb.toString().trim(); 
+    }
+
+    private void voteGame(Scanner sc) {
+        int code = codeToSearch(sc);
+        
+        if (code == -1) { return; }
+        
+        try (RandomAccessFile raf = new RandomAccessFile(DAT_FILE, "rw")) {
+            int pos = dicotomicSearch(raf, code);
+            if (pos == -1) { 
+                System.out.println("[!] Error: El codi de joc " + code + " no existeix");
+                
+            } else {
+                long posVots = ((long) pos * Game.MIDA_REG) + 128;
+                
+                raf.seek(posVots);
+                int vots = raf.readInt();
+                
+                raf.seek(posVots);
+                raf.writeInt(vots + 1);
+                
+                System.out.println("\n[+] Vot registrat correctament");
+
+            }
+            
+        } catch (IOException e) {
+            System.out.println("[!] Error en accedir al fitxer DAT: " + e.getMessage());
+        }
+        
+    }
+    
+    
+   
+    private int codeToSearch(Scanner sc) {
+        System.out.print("\n[+] Introdueix el codi de videojoc per votar: ");
+        
+        try {
+            return Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("[!] Error: El codi ha de ser un un numero sencer");
+            System.out.println("[i] Pista: Si vols veurer els jocs executa el 2n menu");
+            pressToContinue();
+            return -1;
+        }
+    }
+    
+    private int dicotomicSearch(RandomAccessFile raf, int gameCode) throws IOException {
+        int low = 0;
+        int high = (int) (raf.length() / Game.MIDA_REG) - 1;
+        
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            raf.seek((long) mid * Game.MIDA_REG);
+            int actual = raf.readInt();
+            if (actual == gameCode) { return mid; }
+            if (actual < gameCode) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        
+        return -1;
+    }
+    
     /// Context Methods ////////////////////////////////////////////////////////
     
     private void showMenu() {
-        System.out.println("\n╔════ Votació Videojocs ══════════════════════╗");
+        System.out.println("\n╔════ Votació Videojocs ═════════════════════════╗");
         System.out.println("║                                             ║");
         System.out.println("║ 1 ) Importar fitxer TXT i crear fitxer DAT  ║");
         System.out.println("║ 2 ) Mostrar el contingut del RAF            ║");
         System.out.println("║ 3 ) Votar un joc per codi                   ║");
         System.out.println("║ 0 ) Sortir                                  ║");
         System.out.println("║                                             ║");
-        System.out.println("╚═════════════════════════════════════════════╝");
+        System.out.println("╚══════════════════════════════════════════════════╝");
         System.out.print("\n\n[+] Introdueix una opció: ");
     }
     
@@ -198,8 +272,6 @@ public class VotacioVideojocs {
         System.out.print("\n[i] Press any key to continue... ");
         sc.nextLine();
     }
-
-
 
 }
  
